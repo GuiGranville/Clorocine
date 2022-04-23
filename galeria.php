@@ -1,23 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php  include "cabecalho.php"?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <title>Clorocine</title>
-</head>
+<?php
+$filme1 = [
+    "titulo"=>"Vingadores: Ultimato", 
+    "nota" => 8.6, 
+    "sinopse" => "Melhor filme de heróis do mundo",
+    "poster" => "https://www.themoviedb.org/t/p/w300/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg"
+];
+?>
+
+<?php
+$filme2 = [
+    "titulo"=>"Batman", 
+    "nota" => 4, 
+    "sinopse" => "Só o batima",
+    "poster" => "https://www.themoviedb.org/t/p/w300/wd7b4Nv9QBHDTIjc2m7sr0IUMoh.jpg"
+];
+
+$filmes = [$filme1, $filme2];
+
+?>
+
+
 
 <body>
 
     <nav class="nav-extended purple lighten-3">
         <div class="nav-wrapper">
             <ul id="nav-mobile" class="right">
-                <li><a href="galeria.php">Galeria</a></li>
-                <li><a href="cadastrar.php">Cadastrar</a></li>
+                <li class="active"><a href="galeria.php" >Galeria</a></li>
+                <li class="bla"><a href="cadastrar.php">Cadastrar</a></li>
             </ul>
 
         </div>
@@ -33,37 +45,25 @@
         </div>
     </nav>
     <div class="row">
-        <div class="col s3">
-            <div class="card hoverable">
-                <div class="card-image">
-                    <img src="https://www.themoviedb.org/t/p/w300/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg">
-                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">favorite_border</i></a>
-                </div>
-                <div class="card-content">
-                    <p class="valign-wrapper">
-                        <i class="material-icons amber-text">star</i> 9,7
-                    </p>
-                    <span class="card-title">Vingadores</span>
-                    <p>Melhor filme de heróis do mundo</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="col s3">
-            <div class="card hoverable">
-                <div class="card-image">
-                    <img src="https://www.themoviedb.org/t/p/w300/wd7b4Nv9QBHDTIjc2m7sr0IUMoh.jpg">
-                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">favorite_border</i></a>
-                </div>
-                <div class="card-content">
-                    <p class="valign-wrapper">
-                        <i class="material-icons amber-text">star</i> 9,7
-                    </p>
-                    <span class="card-title">Batman</span>
-                    <p>É só o Batima</p>
+        <?php foreach($filmes as $filme) : ?>
+            <div class="col s3">
+                <div class="card hoverable">
+                    <div class="card-image">
+                        <img src="<?= $filme["poster"] ?>">
+                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">favorite_border</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="valign-wrapper">
+                            <i class="material-icons amber-text">star</i> <?= $filme["nota"] ?>
+                        </p>
+                        <span class="card-title"><?= $filme["titulo"] ?></span>
+                        <p><?= $filme["sinopse"] ?></p>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endforeach ?>
+
     </div>
 
 </body>
